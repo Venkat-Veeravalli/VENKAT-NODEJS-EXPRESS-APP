@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="boxicons/css/boxicons.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Ludiflex | Login & Registration</title>
+</head>
+<body>
+ <div class="wrapper">
+    <nav class="nav">
+        <div class="nav-logo">
+            <p> WEATHER INFORMATION</p>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <ul>
+                <li><a href="/signup" class="link active">Home</a></li>
+                <li><a href="#" class="link">Blog</a></li>
+                <li><a href="#" class="link">Services</a></li>
+                <li><a href="#" class="link">About</a></li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button>
+            <button class="btn" id="registerBtn" onclick="register()">Sign Up</button>
+        </div>
+        <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+        </div>
+    </nav>
+
+<!----------------------------- Form box ----------------------------------->    
+    <div class="form-box">
+        
+        <!------------------- login form -------------------------->
+
+       
+<form name="loginform" class="login-container" id="login" action="/loginsubmit" method="GET">
+    <div class="top">
+        <span>Don't have an account? <a href="/signup" onclick="register()">Sign Up</a></span>
+        <header>Login</header>
+    </div>
+    <div class="input-box">
+        <input type="email" id="email" name="email" class="input-field" placeholder="Username or Email" required />
+        <i class="bx bx-user"></i>
+    </div>
+    <div class="input-box">
+        <input type="password" id="password" name="password" class="input-field" placeholder="Password" required />
+        <i class="bx bx-lock-alt"></i>
+    </div>
+    <div class="input-box">
+        <input type="submit" class="submit" value="Sign In">
+        <p id="error-message"></p>
+    </div>
+    <div class="two-col">
+        <div class="one">
+            <input type="checkbox" id="login-check">
+            <label for="login-check"> Remember Me</label>
+        </div>
+        <div class="two">
+            <label><a href="#">Forgot password?</a></label>
+        </div>
+    </div>
+</form>
+        <script>
+            
+        function validateLoginForm() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+        
+            // ... (existing login validation)
+        
+            return true; // Allow form submission
+        }
+        </script>
+
+        <!------------------- registration form -------------------------->
+       
+                   
+        <div class="register-container" id="register">
+            <div class="top">
+                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
+                <header>Sign Up</header>
+            </div>
+            <form action="/signupsubmit" name="signupForm" method="GET" onsubmit="return validation()">
+            <div class="two-forms">
+                <div class="input-box">
+                    <input class="input-field" required id="name" type="text" name="username" placeholder="Username" />
+                    <i class="bx bx-user"></i>
+                </div>
+                <div class="input-box">
+                    <input class="input-field" required id="email" type="email" name="email" placeholder="Email" />
+                    <i class="bx bx-envelope"></i>
+                </div>
+            </div>
+            <div class="input-box">
+                <input class="input-field" required id="pass" type="password" name="password" placeholder="Password" />
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input class="input-field" required id="CPass" type="password" name="CPassword" placeholder="Confirm Password" />
+                <i class="bx bx-lock-alt"></i>
+            </div>
+            <div class="input-box">
+                <input required id="btn" type="submit" class="submit" value="Register" />
+            </div>
+            <div class="two-col">
+                <div class="one">
+                    <input type="checkbox" id="register-check">
+                    <label for="register-check"> Remember Me</label>
+                </div>
+                <div class="two">
+                    <label><a href="#">Terms & conditions</a></label>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
+<div class="popup" id="popup">
+<ion-icon name="checkmark-circle-outline"></ion-icon>
+<h2>Thank You!</h2>
+<p>You were registered successfully. Thanks!</p>
+<a href="#"><button onclick="CloseSlide()">OK</button></a>
+</div>  
+<script>
+function validateRegistrationForm() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('pass').value;
+    const confirmPassword = document.getElementById('CPass').value;
+
+    if (name.trim() === '') {
+        alert('Please enter your username.');
+        return false;
+    }
+
+    if (email.trim() === '') {
+        alert('Please enter your email.');
+        return false;
+    }
+
+    if (!isValidEmail(email)) {
+        alert('Please enter a valid email.');
+        return false;
+    }
+
+    if (password.trim() === '') {
+        alert('Please enter a password.');
+        return false;
+    }
+
+    if (confirmPassword.trim() === '') {
+        alert('Please confirm your password.');
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return false;
+    }
+
+    return true; // Allow form submission
+}
+
+function isValidEmail(email) {
+    // Basic email validation using a regular expression
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+    var a = document.getElementById("loginBtn");
+    var b = document.getElementById("registerBtn");
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+
+    function login() {
+        x.style.left = "4px";
+        y.style.right = "-520px";
+        a.className += " white-btn";
+        b.className = "btn";
+        x.style.opacity = 1;
+        y.style.opacity = 0;
+    }
+
+    function register() {
+        x.style.left = "-510px";
+        y.style.right = "5px";
+        a.className = "btn";
+        b.className += " white-btn";
+        x.style.opacity = 0;
+        y.style.opacity = 1;
+    }
+
+   
+   function myMenuFunction() {
+    var i = document.getElementById("navMenu");
+
+    if(i.className === "nav-menu") {
+        i.className += " responsive";
+    } else {
+        i.className = "nav-menu";
+    }
+   }
+ 
+</script>
+</body>
+</html>
