@@ -20,7 +20,7 @@
                 .banner{
             width:100%;
             height:100vh;
-            background-image: linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.75)),url("https://cdn.glitch.global/3247fa20-ac14-4295-ac27-7f9293d81c58/Weather-Backgrounds-HD.jpg?v=1692905331160");
+            background-image: linear-gradient(rgba(14, 11, 11, 0.75),rgba(0, 0, 0, 0.0)),url("https://cdn.glitch.global/3247fa20-ac14-4295-ac27-7f9293d81c58/Weather-Backgrounds-HD.jpg?v=1692905331160");
             background-size: cover;
             background-position: center;
             }
@@ -105,9 +105,9 @@
             .container {
                 width: 500px;
                 margin:7% auto;
-                border-radius: 16px;
-                background-color: rgba(0,0,0,0.1);
-                box-shadow: 0 0 17px #333;
+                border-radius: 20px;
+                background-color: rgba(15, 5, 10, 0.7);
+                box-shadow: 5px 15px 20px #010101;
             }
             
             .header {
@@ -116,9 +116,10 @@
             }
             
             .header h1 {
-                color: #333;
-                font-size: 35px;
-                margin-bottom: 50px;
+                color: #e9a7a7;
+                font-size: 40px;
+                margin-bottom: 70px;
+                padding: 5px;
             }
             
             .main {
@@ -126,6 +127,7 @@
             }
             
             .main input, button {
+                font-size: large; 
                 width: 200px;
                 height: 30px;
                 border:none;
@@ -133,44 +135,58 @@
                 padding-left: 30px;
                 box-sizing: border-box;
                 font-size: 15px;
-                color: #333;
-                margin-bottom: 30px;
+                color: #070404;
+                margin-bottom: 20px;
+                font-size: 1.1em;
+                border-radius: 15px;
+               
             }
             
             .main button {
                 padding-left: 0;
-                background-color: #83acf1;
-                letter-spacing: 1px;
-                font-weight: bold;
+                border: 2px solid #040404;
+                background: #9b64e3;
+                border-radius: 15px;
                 margin-bottom: 70px;
+                padding: 20px 0;
+                font-size: large;
+                font-weight: 700;
+                font-size: 20px;
+                width: 200px;
+                height: 30px;
+                outline: none;
+                box-sizing: border-box;
+            
+             
+
+
             }
             
             .main button:hover {
-                box-shadow: 2px 2px 5px #555;
-                background-color: #7799d4;
+                box-shadow: 2px 2px 5px #111111;
+                background-color: #bcc3cf;
             }
             .main input:hover {
-                box-shadow: 2px 2px 5px #555;
-                background-color: #ddd;
+                box-shadow: 2px 2px 5px #020202;
+                background-color: #0b0a0a;
             }
             
             .main span {
                 position: relative;
-            }
-            
-            .main i {
-                position: absolute;
-                left: 15px;
-                color: #333;
-                font-size: 16px;
-                top: 2px;
+                width: 100%;
+                height: 50px;
+                background: transparent;
+                border: none;
+                outline: none;
+                font-size: 3em;
+                border-radius: 15px;
+
             }
             </style>
                  
                 <div class="banner">
                     <div class="navbar">
                         <h1>WEATHER</h1>
-    
                         <ul>
                             <li>
                                <a href="/home">HOME</a>
@@ -194,18 +210,13 @@
                                          </div>                         
                                     </div><br>
                                     <div alig="center"> 
-                                    <input type="submit" value="Weather details" class="btn btn-primary">
+                                    <button type="submit"  value="Weather details" class="btn btn-primary">Weather details</button>
                                 </div>
                             </form>
                             </div>
                         </div>
                         </div>
-                    </div>
-               
-                
-               
-                
-                
+                    </div> 
             </body>
             </html>
             
