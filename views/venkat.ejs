@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-UA-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .dark-theme {
+            --background-color: #000;
+            --text-color: #999;
+            --tittle-color: #fff;
+        }
+
+        body {
+            background: linear-gradient(454deg, #b8d0e3, #df7676);
+        }
+
+        .header {
+            width: 100%;
+            min-height: 100vh;
+            padding: 0 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .logo img {
+            width: 150px;
+        }
+
+        nav ul {
+            width: 100%;
+            text-align: center;
+            list-style: armenian;
+            margin-right: 150px;
+            display: inline;
+            margin: 20px;
+            background-color: #9383ee;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 60px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 10px 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 350;
+            font-size: larger;
+            font-style: italic;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .toggle-btn {
+            background: #4864ff;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 40px;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .toggle-btn img {
+            width: 25px;
+            margin-left: 10px;
+        }
+
+        .content {
+            margin-top: 10%;
+            max-width: 600px;
+        }
+
+        .content h1 {
+            font-size: 80px;
+            font-family: serif;
+            color: var(--title-color);
+            font-weight: 600;
+        }
+
+        .content h1 span {
+            font-family: serif;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        .content ul li {
+            margin: 10px;
+            padding: 10px;
+            font-family: cursive;
+        }
+
+        .content p {
+            font-family: monospace;
+            font-size: large;
+        }
+
+        .content h2 u {
+            margin: 50px;
+            padding: 150px;
+            font-family: monospace;
+            font-weight: 1500;
+            font-style: italic;
+            text-align: center;
+            font-size: larger;
+        }
+
+        .content a {
+            background: #4864ff;
+            color: #fff;
+            padding: 15px 70px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+        }
+
+        .image-box {
+            width: 600px;
+            position: absolute;
+            display: block;
+        }
+
+        .image-box {
+            position: absolute;
+            bottom: -5%;
+            left: 60%;
+        }
+
+        .pattern {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            display: flex;
+            transform: rotate(40deg);
+            z-index: -1;
+        }
+
+        .navigation .btnlogin-popup {
+            width: 130px;
+            height: 50px;
+            background: transparent;
+            border: 2px solid #3b1010;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            color: #030303;
+            font-weight: 500;
+            margin-left: 1100px;
+            transition: 0.5s;
+        }
+
+        .navigation .btnlogin-popup:hover {
+            background: #bc5b2f;
+        }
+
+        .wrapper {
+            position: relative;
+            width: 400px;
+            height: 440px;
+            background: rgb(188, 150, 150);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .wrapper .form-box {
+            width: 100%;
+            padding: 40px;
+        }
+
+        .wrapper .icon-close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45px;
+            height: 45px;
+            background: #162938;
+            font-size: 2em;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom-left-radius: 20px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .Form-box h2 {
+            font-size: 2em;
+            color: #162938;
+            text-align: center;
+        }
+
+        .input-box {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            border-bottom: 2px solid #162938;
+            margin: 30px 0;
+        }
+
+        .input-box label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            transform: translate(-50%);
+            font-size: 1em;
+            color: #162938;
+            font-weight: 500;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        .input-box input:focus~label,
+        .input-box input:valid~label {
+            top: -5px;
+        }
+
+        .input-box input {
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-size: 1em;
+            color: #162938;
+            font-weight: 600;
+            padding: 0 35px 0 5px;
+        }
+
+        .input-box .icon {
+            position: absolute;
+            right: 8px;
+            font-size: 1.2em;
+            color: #162938;
+            line-height: 57px;
+        }
+
+        .remember-forgot {
+            font-size: 0.9em;
+            color: #162938;
+            font-weight: 500;
+            margin: -15px 0 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .remember-forgot label input {
+            accent-color: #162938;
+            margin-right: 3px;
+        }
+
+        .remember-forgot a {
+            color: #162938;
+            text-decoration: none;
+        }
+
+        .remember-forgot a:hover {
+            text-decoration: underline;
+        }
+
+        .Btn {
+            width: 100%;
+            height: 45px;
+            background: #162938;
+            border: none;
+            outline: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .login-register {
+            font-size: 1em;
+            color: #162938;
+            text-align: center;
+            font-weight: 500;
+            margin: 25px 0 10px;
+        }
+
+        .login-register p a {
+            color: #162938;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-register p a:hover {
+            text-decoration: underline;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        .dark-theme {
+            --background-color: #000;
+            --text-color: #0b0505;
+            --title-color: #fff;
+            /* Dark mode styles go here */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <nav>
+            <a href="#" class="logo">
+                <img src="https://cdn.glitch.global/9e243afa-c140-430f-b09d-db48f2445daf/360_F_483909569_OI4LKNeFgHwvvVju60fejLd9gj43dIcd-removebg-preview.png?v=1694614813911">
+            </a>
+            <ul>
+                <li><a href="#">V V S Raghavendra</a></li>
+                <li><a href="#">22PA5A0324</a></li>
+                <li><a href="#">Mechanical Engineering</a></li>
+                <li><a href="#">9989530421</a></li>
+            </ul>
+            <div class="toggle-btn" id="btn">
+                <span>Dark</span>
+                <img src="https://cdn.glitch.global/9e243afa-c140-430f-b09d-db48f2445daf/moon.png?v=1694614666898">
+            </div>
+        </nav>
+        <header>
+            <nav class="navigation">
+                <button class="btnlogin-popup" id="login-button">Login</button>
+            </nav>
+        </header>
+        <div class="wrapper" id="login-form-wrapper">
+            <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+            <div class="Form-box login">
+                <h2>Login</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="mail-outline"></ion-icon>
+                        </span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="Btn">Login</button>
+                    <div class="login-register">
+                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content">
+            <h1>hello!</h1>
+            <h1><span>I'M</span> venkat </h1>
+            <h4>
+                <p>I'm a b.tech Mechanical Engineering in vishnu institute of technology and i'm very much interested and passionate about website Designing. I always try my best to provide the best experience.</p>
+            </h4>
+            <div>
+                <h2><u>Interests :</u></h2>
+                <h3>
+                    <ul>
+                        <li>Programming</li>
+                        <li>Designing</li>
+                    </ul>
+                </h3>
+            </div>
+            <section>
+                <h2><u>Achievements :</u></h2>
+                <h3>
+                    <ul>
+                        <li>Marshall As Inidan Racing League</li>
+                    </ul>
+                </h3>
+                <h2><u>Skills :</u></h2>
+                <h3>
+                    <ul>
+                        <li>Auto Cad</li>
+                        <li>CREO Parametric</li>
+                        <li>CATIA</li>
+                        <li>Python</li>
+                        <li>Beginner Level In HTML&CSS</li>
+                        <li>MS Office</li>
+                    </ul>
+                </h3>
+                <h2><u>Hobbies :</u></h2>
+                <h3>
+                    <ul>
+                        <li>Reading Books</li>
+                        <li>Listening Music</li>
+                        <li>Programming</li>
+                        <li>Volleyball</li>
+                    </ul>
+                </h3>
+                <h2><u>Languages :</u></h2>
+                <h3>
+                    <ul>
+                        <li>Telugu</li>
+                        <li>English</li>
+                        <li>Hindi</li>
+                    </ul>
+                </h3>
+                <a href="#">Hire Me</a>
+            </section>
+        </div>
+        <div class="image-box image-box1">
+            <img src="https://cdn.glitch.global/9e243afa-c140-430f-b09d-db48f2445daf/Venkat%20vvs.png?v=1694614756895" width="650" height="750">
+        </div>
+    </div>
+    <script type="module">
+        const darkModeToggle = document.getElementById('btn');
+        const body = document.body;
+        const loginFormWrapper = document.getElementById('login-form-wrapper');
+        const loginButton = document.getElementById('login-button');
+        const closeLoginButton = document.querySelector('.icon-close');
+    
+        darkModeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-theme')) {
+                body.classList.remove('dark-theme');
+                darkModeToggle.style.backgroundColor = '#4864ff'; // Change button background color in light mode
+            } else {
+                body.classList.add('dark-theme');
+                darkModeToggle.style.backgroundColor = '#333'; // Change button background color in dark mode
+            }
+        });
+    
+        loginButton.addEventListener('click', () => {
+            loginFormWrapper.style.display = 'block';
+        });
+    
+        closeLoginButton.addEventListener('click', () => {
+            loginFormWrapper.style.display = 'none';
+        });
+    </script>    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

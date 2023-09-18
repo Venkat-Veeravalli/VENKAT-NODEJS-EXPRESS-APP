@@ -1,223 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Information</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, h3, h4, h5, h6, p {
+            margin: 0;
+            padding: 0;
+        }
 
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-                <meta charset="UTF-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Document</title>
-                <link rel="style sheet" href="style.css">
-            </head>
-            
-            <body>
-                
-                <style>
-                *{
-                    margin:0;
-                    padding:0;
-                    font-family:sans-serif;
-                }
-                .banner{
-            width:100%;
-            height:100vh;
-            background-image: linear-gradient(rgba(14, 11, 11, 0.75),rgba(0, 0, 0, 0.0)),url("https://cdn.glitch.global/3247fa20-ac14-4295-ac27-7f9293d81c58/Weather-Backgrounds-HD.jpg?v=1692905331160");
-            background-size: cover;
-            background-position: center;
-            }
-            .navbar{
-            width:85%;
-            margin:auto;
-            padding:35px 0;
-            display:flex;
-            align-items:center;
-            justify-content:space-between;
-            }
-            .navbar{
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0e0e0; /* Background color for the body */
+            margin: 0; /* Remove margin */
+            padding: 20px; /* Add padding */
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 28px;
+        }
+
+        .top-nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .top-nav li {
+            margin-right: 20px;
+        }
+
+        .top-nav a {
             text-decoration: none;
-            color:#fff;
-            }
-            .logo{
-            width:120px;
-            cursor:pointer;
-            }
-            .navbar ul li{
-            list-style:none;
-            display:inline-block;
-            margin:0 20px;
-            position:relative;
-            }
-            .navbar ul li a{
-            text-decoration: none;
-            color:#fff;
+            color: white;
+            font-weight: bold;
             text-transform: uppercase;
-            }
-            .navbar ul li::after{
-            content: '';
-            width:0;
-            height: 2px;
-            background:#009688;
-            display: block;
-            margin: auto;
-            transition: 0.5s;
-            }
-            .navbar ul li:hover::after{
-            width:100%;
-            }
-            .content{
-            width:100%;
-            position:absolute;
-            top:50%;
-            transform: translateY(-50%);
+        }
+
+        .search-container {
             text-align: center;
-            color:#fff;
-            }
-            .content h1{
-            font-size:60px;
-            margin-top:80px;
-            }
-            .content p{
-            margin: 20px auto;
-            font-weight: 100;
-            line-height: 25px;
-            }
-            button{
-            width:200px;
-            padding:15px 0;
-            background-color:black ;
-            text-align:center;
-            color:#fff;
-            margin:20px 10px;
-            border-radius:25px;
-            border-color:#009688 ;
-            font-weight:bold;
+            margin-top: 20px;
+        }
+
+        #location-input {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 16px;
+        }
+
+        #search-button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
             cursor: pointer;
-            transition: width 2s;
-            transition-timing-function: linear;
-            }
-            body {
-                font-family: sans-serif;	
-                background-image: url(bg.jpg);
-                background-repeat: no-repeat;
-                overflow: hidden;
-                background-size: cover;
-            }
-            
-            .container {
-                width: 500px;
-                margin:7% auto;
-                border-radius: 20px;
-                background-color: rgba(15, 5, 10, 0.7);
-                box-shadow: 5px 15px 20px #010101;
-            }
-            
-            .header {
-                text-align: center;
-                padding-top: 50px;
-            }
-            
-            .header h1 {
-                color: #e9a7a7;
-                font-size: 40px;
-                margin-bottom: 70px;
-                padding: 5px;
-            }
-            
-            .main {
-                text-align: center;
-            }
-            
-            .main input, button {
-                font-size: large; 
-                width: 200px;
-                height: 30px;
-                border:none;
-                outline: none;
-                padding-left: 30px;
-                box-sizing: border-box;
-                font-size: 15px;
-                color: #070404;
-                margin-bottom: 20px;
-                font-size: 1.1em;
-                border-radius: 15px;
-               
-            }
-            
-            .main button {
-                padding-left: 0;
-                border: 2px solid #040404;
-                background: #9b64e3;
-                border-radius: 15px;
-                margin-bottom: 70px;
-                padding: 20px 0;
-                font-size: large;
-                font-weight: 700;
-                font-size: 20px;
-                width: 200px;
-                height: 30px;
-                outline: none;
-                box-sizing: border-box;
-            
-             
+            font-size: 16px;
+        }
+
+        .weather-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between; /* Adjusted spacing */
+            margin-top: 20px; /* Added margin for the card container */
+        }
+
+        .weather-card {
+            background-color: #f9f9f9; /* Card background color */
+            border: 2px solid #007BFF; /* Border color */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            width: calc(33.33% - 20px); /* 3 cards per row */
+            text-align: center;
+            position: relative;
+            max-width: 300px; /* Decreased card size */
+            cursor: pointer; /* Add pointer cursor to cards */
+            transition: width 0.2s, transform 0.2s; /* Added card transition effect */
+        }
+
+        /* Ribbon styling */
+        .ribbon {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #007BFF; /* Ribbon color */
+            color: white;
+            padding: 5px 15px;
+            border-radius: 0 0 0 10px; /* Ribbon shape */
+        }
+
+        .weather-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .weather-card h2 {
+            font-size: 20px; /* Decreased heading font size */
+            margin-top: 10px;
+        }
+
+        .weather-card p {
+            margin-top: 10px;
+            font-size: 16px; /* Decreased text font size */
+        }
+
+        .date-time {
+            font-size: 14px;
+            color: #0c0101;
+        }
+
+        /* Welcome message styling */
+        .welcome-message {
+            text-align: center;
+            font-size: 24px;
+            color: rgb(237, 231, 231); /* Text color for the welcome message */
+            margin-top: 20px; /* Added margin for the welcome message */
+            background-color: #333; /* Background color for the welcome message */
+            padding: 10px 0; /* Added padding for the welcome message */
+        }
+
+        .weather-card:hover {
+            width: 35%; /* Enlarge the card on hover */
+            transform: scale(1.05); /* Apply a scale transform on hover */
+        }
+
+        .weather-card.selected {
+            width: 100%; /* Increase the width when selected */
+            max-width: 600px; /* Increase the max-width */
+            z-index: 1; /* Bring the selected card to the front */
+        }
+
+        /* Define different background colors for cards */
+        .card-mumbai { background-color: #91a0b5; }
+        .card-delhi { background-color: #8b8698; }
+        .card-chennai { background-color: #8b8698; }
+        .card-banglore { background-color: #9b97a4; }
+        .card-hyderabad { background-color: #797e90; }
+        .card-visakhapatnam { background-color: #8b8698; }
+        .card-kolkata { background-color: #8b8698; }
+        .card-nagpur { background-color: #8b8698; }
+        .card-rajkot { background-color: #8b8698; }
+        .card-agra { background-color: #8b8698; }
+        .card-vijayawada { background-color: #8b8698; }
+        .card-madurai { background-color: #8b8698; }
+        .card-kochi { background-color: #8b8698; }
+        .card-bhopal { background-color: #8b8698; }
+        .card-varanashi { background-color: #8b8698; }
+        .card-nashik { background-color: #8b8698; }
+        .card-jaipur { background-color: #8b8698; }
+        .card-coimbatore { background-color: #8b8698; }
+        .card-pune { background-color: #8b8698; }
+        .card-varanasi { background-color: #8b8698; }
+        .card-warangal { background-color: #8b8698; }
+        /* Add more card classes with different background colors as needed */
+
+        /* Style the description content */
+        .weather-card-description {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgb(100, 100, 100);
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .weather-card:hover .weather-card-description {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>Weather Information</h1>
+        </div>
+        <div class="top-nav">
+            <ul>
+                <li><a href="/dash">Home</a></li>
+                <li><a href="/signup">Sign Out</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <form action="/weathersubmit" method="GET">
+        <input type="text" id="location-input" placeholder="Enter Location" name="location">
+        <button type="submit" id="search-button"value="Weather details" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
 
 
-            }
-            
-            .main button:hover {
-                box-shadow: 2px 2px 5px #111111;
-                background-color: #bcc3cf;
-            }
-            .main input:hover {
-                box-shadow: 2px 2px 5px #020202;
-                background-color: #0b0a0a;
-            }
-            
-            .main span {
-                position: relative;
-                width: 100%;
-                height: 50px;
-                background: transparent;
-                border: none;
-                outline: none;
-                font-size: 3em;
-                border-radius: 15px;
+    <!-- Welcome message -->
+    <div class="welcome-message">
+        Welcome to Weather Information!
+    </div>
 
+    <div class="weather-cards-container" id="weather-cards-container">
+        <!-- Weather cards will be added here -->
+    </div>
+
+    <script>
+        // Function to create a weather card
+        function createWeatherCard(weather) {
+            const cardContainer = document.querySelector("#weather-cards-container");
+
+            const card = document.createElement("div");
+            card.classList.add("weather-card");
+            // Add a class for the specific location (e.g., card-mumbai)
+            card.classList.add(`card-${weather.locationName.toLowerCase()}`);
+
+            // Get the image URL based on the location name
+            const locationImages = {
+                Mumbai: 'https://cdn.glitch.global/50b901c5-3507-448f-8eed-280cf9e64425/1024px-Mumbai_Aug_2018_43397784544-1024x761.jpg?v=1694979887655',
+                Delhi: 'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Delhi.jpg?v=1695020106382',
+                Banglore: 'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/10-best-tourist-places-to-visit-in-Bangalore-and-must-visit-places-near-it.jpg?v=1695020000840',
+                Hyderabad: 'https://cdn.glitch.global/50b901c5-3507-448f-8eed-280cf9e64425/HYD.jpg?v=1694982407811',
+                Chennai:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Chennai.jpg?v=1695020449037',
+                Jaipur:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Jaipur.jpg?v=1695020504600',
+                Kolkata:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Kolkata.jpg?v=1695020570981',
+                Pune:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/places-to-visit-in-pune.jpg?v=1695020760458',
+                Warangal:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Warangal.jpg?v=1695020806698',
+                Coimbatore:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/coimbatore.jpg?v=1695020887121',
+                Rajkot:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Rajkot.jpg?v=1695021015379',
+                Visakhapatnam:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/visakhpatnam.jpg?v=1695021079322',
+                Bhopal:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Bhopal.jpg?v=1695021512180',
+                Nagpur:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Jaipur.jpg?v=1695021604288',
+                Kochi:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/KOCHI.jpg?v=1695021538808',
+                Nashik:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/NASHIK.jpg?v=1695021558142',
+                Agra:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/AGRA.jpg?v=1695021509759',
+                Vijayawada:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/VIJAYAWADA.jpg?v=1695021523923',
+                Madurai:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/MADHURAI.jpg?v=1695021508086',
+                Varanasi:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/varanasi.jpg?v=1695021788211',
+                // Add more locations and image URLs here
+            };
+
+            const imageUrl = locationImages[weather.locationName] || 'https://example.com/default-image.jpg';
+
+            const image = document.createElement("img");
+            image.src = imageUrl; // Use the image URL
+            image.alt = weather.locationName;
+
+            // Ribbon with location name
+            const ribbon = document.createElement("div");
+            ribbon.classList.add("ribbon");
+            ribbon.textContent = weather.locationName;
+
+    const locationName = document.createElement("h2");
+    locationName.textContent = `Location: ${weather.locationName}`;
+
+    const country = document.createElement("h2");
+    country.textContent = `Country: ${weather.country}`;
+
+    const windSpeed = document.createElement("h2");
+    windSpeed.textContent = `Wind Speed: ${weather.windSpeed} km/h`;
+
+    const temperature = document.createElement("p");
+    temperature.textContent = `Temperature: ${weather.temperature}°C`;
+
+    const humidity = document.createElement("p");
+    humidity.textContent = `Humidity: ${weather.humidity}%`;
+
+    const dateTime = document.createElement("p");
+    dateTime.classList.add("date-time");
+    dateTime.textContent = `Updated: ${weather.dateTime}`;
+
+    // Description content
+    const description = document.createElement("p");
+    description.classList.add("weather-card-description");
+    description.textContent = getCardDescription(weather.locationName);
+
+            card.appendChild(image);
+            card.appendChild(ribbon);
+            card.appendChild(locationName);
+            card.appendChild(country);
+            card.appendChild(windSpeed);
+            card.appendChild(temperature);
+            card.appendChild(humidity);
+            card.appendChild(dateTime);
+            card.appendChild(description);
+
+            cardContainer.appendChild(card);
+
+            card.addEventListener("click", () => {
+        const cards = document.querySelectorAll(".weather-card");
+        cards.forEach((c) => {
+            c.classList.remove("selected"); // Deselect all cards
+            c.style.display = "none"; // Hide all cards
+        });
+        card.classList.add("selected"); // Select the clicked card
+        card.style.display = "block"; // Display the selected card
+
+        // Scroll the selected card into view
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+        }
+
+// Function to fetch weather data from an API
+async function fetchWeatherData(location) {
+    try {
+        // Replace 'YOUR_API_KEY' with your actual API key
+        const apiKey = 'r1JI1KF9JTTSAtVpMWpUH2PDV1T40G1H1FU2cvYvRo4NiarhHUl214fjOnwx';
+        const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=1d38e74f95ff438e84b64154220306&q=${apiKey}&q=${location}`;
+
+        // Fetch data from the API
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+
+        // Extract necessary weather information from the API response
+        const weatherData = {
+            locationName: data.location.name,
+            country: data.location.country,
+            windSpeed: data.current.wind_kph,
+            temperature: data.current.temp_c,
+            humidity: data.current.humidity,
+            dateTime: data.current.last_updated,
+        };
+
+        createWeatherCard(weatherData);
+    } catch (error) {
+        console.error('Error fetching weather data:', error);
+    }
+}
+
+        // Event listener for the search button
+        document.getElementById("search-button").addEventListener("click", () => {
+            const location = document.getElementById("location-input").value;
+            if (location) {
+                fetchWeatherData(location);
             }
-            </style>
-                 
-                <div class="banner">
-                    <div class="navbar">
-                        <h1>WEATHER</h1>
-                        <ul>
-                            <li>
-                               <a href="/home">HOME</a>
-                            </li>
-                            <li>
-                                <a href="/signup">signout</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <div class="container">
-                            <div class="header">
-                                <h1>WEATHER</h1>
-                            </div>
-                            <div class="main">
-                                <form action="/weathersubmit" method="GET">
-                                    <div class="form-group">
-                                        <div class="input-group" >                             
-                                            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-geo-alt-fill" style="color: darkblue;"></i></span>
-                                                <input type="text" class="form-control" placeholder="Enter the location" name="location">
-                                         </div>                         
-                                    </div><br>
-                                    <div alig="center"> 
-                                    <button type="submit"  value="Weather details" class="btn btn-primary">Weather details</button>
-                                </div>
-                            </form>
-                            </div>
-                        </div>
-                        </div>
-                    </div> 
-            </body>
-            </html>
-            
-       
+        });
+
+        // Initially load weather data for predefined locations
+        const predefinedLocations = ['Mumbai', 'Delhi', 'Chennai','Banglore', 'Kolkata', 'Hyderabad', 'Jaipur', 'Pune', 'Warangal', 'Coimbatore', 'Rajkot', 'Visakhapatnam', 'Bhopal', 'Nagpur', 'Kochi', 'Nashik', 'Agra', 'Madurai', 'Vijayawada', 'Varanasi'];
+        predefinedLocations.forEach((location) => {
+            fetchWeatherData(location);
+        });
+
+        // Function to get the description text for a location
+        function getCardDescription(locationName) {
+            const descriptions = {
+                Mumbai: "Mumbai (formerly called Bombay) is a densely populated city on India’s west coast. A financial center, it's India's largest city. On the Mumbai Harbour waterfront stands the iconic Gateway of India stone arch, built by the British Raj in 1924. Offshore, nearby Elephanta Island holds ancient cave temples dedicated to the Hindu god Shiva. The city's also famous as the heart of the Bollywood film industry.",
+                Delhi: "New Delhi is the capital of India and a part of the National Capital Territory of Delhi. New Delhi is the seat of all three branches of the Government of India, hosting the Rashtrapati Bhavan, Sansad Bhavan, and the Supreme Court.",
+                Chennai: "Chennai, on the Bay of Bengal in eastern India, is the capital of the state of Tamil Nadu. The city is home to Fort St. George, built in 1644 and now a museum showcasing the city’s roots as a British military garrison and East India Company trading outpost, when it was called Madras. Religious sites include Kapaleeshwarar Temple, adorned with carved and painted gods, and St. Mary’s, a 17th-century Anglican church.",
+                Hyderabad: "Hyderabad is the capital of southern India's Telangana state. A major center for the technology industry, it's home to many upscale restaurants and shops. Its historic sites include Golconda Fort, a former diamond-trading center that was once the Qutb Shahi dynastic capital. The Charminar, a 16th-century mosque whose 4 arches support towering minarets, is an old city landmark near the long-standing Laad Bazaar.",
+                Banglore:"Bengaluru (also called Bangalore) is the capital of India's southern Karnataka state. The center of India's high-tech industry, the city is also known for its parks and nightlife. By Cubbon Park, Vidhana Soudha is a Neo-Dravidian legislative building. Former royal residences include 19th-century Bangalore Palace, modeled after England’s Windsor Castle, and Tipu Sultan’s Summer Palace, an 18th-century teak structure.",
+                Jaipur:"Jaipur is the capital of India’s Rajasthan state. It evokes the royal family that once ruled the region and that, in 1727, founded what is now called the Old City, or “Pink City” for its trademark building color. At the center of its stately street grid (notable in India) stands the opulent, colonnaded City Palace complex. With gardens, courtyards and museums, part of it is still a royal residence.",
+                Kolkata:"Kolkata (formerly Calcutta) is the capital of India's West Bengal state. Founded as an East India Company trading post, it was India's capital under the British Raj from 1773–1911. Today it’s known for its grand colonial architecture, art galleries and cultural festivals. It’s also home to Mother House, headquarters of the Missionaries of Charity, founded by Mother Teresa, whose tomb is on site.",
+                Pune:"Pune is a sprawling city in the western Indian state of Maharashtra. It was once the base of the Peshwas (prime ministers) of the Maratha Empire, which lasted from 1674 to 1818. It's known for the grand Aga Khan Palace, built in 1892 and now a memorial to Mahatma Gandhi, whose ashes are preserved in the garden. The 8th-century Pataleshwar Cave Temple is dedicated to the Hindu god Shiva.",
+                Warangal:"Warangal is a city in the south Indian state of Telangana. It was the capital of the Kakatiya dynasty from the 12th to 14th centuries, and many intricately carved monuments from this period still stand. Among them are the ruins of 13th-century Warangal Fort and the Thousand Pillar Temple, built in 1163. Set on a lake, Bhadrakali Temple dates to the 7th century and is dedicated to the Hindu goddess Kali.",
+                Coimbatore:"Coimbatore is a city in the south Indian state of Tamil Nadu. To the northwest is the centuries-old, Dravidian-style Arulmigu Subramaniyaswami Temple, Marudamalai. The colorful and intricately carved Arulmigu Patteeswarar Swamy Temple lies southeast of here. In the center, the Gass Forest Museum has a huge collection of preserved animals and tree trunks. Southeast, birds and butterflies inhabit Singanallur Lake.",
+                Rajkot:"Rajkot is a city in the western Indian state of Gujarat. In central Jubilee Garden are the Lang Library, with Gujarati literature, and the Watson Museum, with paintings and artifacts documenting British colonial rule. Kaba Gandhi No Delo, the house where Mahatma Gandhi spent part of his childhood, displays photos of the Indian leader and his belongings. The Rotary Dolls Museum exhibits dolls from around the world.",
+                Visakhapatnam:"Visakhapatnam is a port city and industrial center in the Indian state of Andhra Pradesh, on the Bay of Bengal. It's known for its many beaches, including Ramakrishna Beach, home to a preserved submarine at the Kursura Submarine Museum. Nearby are the elaborate Kali Temple and the Visakha Museum, an old Dutch bungalow housing local maritime and historical exhibits.",
+                Bhopal:"Bhopal is a city in the central Indian state of Madhya Pradesh. It's one of India’s greenest cities. There are two main lakes, the Upper Lake and the Lower Lake. On the banks of the Upper Lake is Van Vihar National Park, home to tigers, lions and leopards. The State Museum has fossils, paintings and rare Jain sculptures. Taj-ul-Masjid is one of Asia’s largest mosques, with white domes, minarets and a huge courtyard.",
+                Nagpur:"Nagpur is a large city in the central Indian state of Maharashtra. The 19th-century Nagpur Central Museum displays items found locally, including fossils, sarcophagi and Mughal weaponry. The Raman Science Centre has hands-on exhibits and a planetarium. Sitabuldi Fort, in the Sitabuldi Hills, was the site of an 1817 battle. To the southwest, the immense, domed Deekshabhoomi is a Buddhist monument and pilgrimage site.",
+                Kochi:"Kochi (also known as Cochin) is a city in southwest India's coastal Kerala state. It has been a port since 1341, when a flood carved out its harbor and opened it to Arab, Chinese and European merchants. Sites reflecting those influences include Fort Kochi, a settlement with tiled colonial bungalows and diverse houses of worship. Cantilevered Chinese fishing nets, typical of Kochi, have been in use for centuries.",
+                Nashik:"Nashik is an ancient holy city in Maharashtra, a state in western India. It’s known for its links to the “Ramayana” epic poem. On the Godavari River is Panchavati, a temple complex. Nearby, Lord Rama was thought to have bathed at Ram Kund water tank, today attended by Hindu devotees. Shri Kalaram Sansthan Mandir is an ancient shrine to Rama, while Rama and Sita are said to have worshipped at Sita Gufaa caves.",
+                Agra:"Agra is a city on the banks of the Yamuna river in the Indian state of Uttar Pradesh, about 230 kilometres south-east of the national capital Delhi and 330 km west of the state capital Lucknow.",
+                Vijayawada:"Vijayawada is a city in the southeast Indian state of Andhra Pradesh. It's known for the ornate Kanaka Durga Temple, which sits atop a hill overlooking the city. The Undavalli Caves feature ancient rock-cut temples, carved out of a sandstone hillside and adorned with elaborate statues. The massive Prakasam Barrage stretches across the Krishna River. Nearby is Bhavani Island, with forests and waterfront gardens.",
+                Madurai:"Madurai is an energetic, ancient city on the Vaigai River in the South Indian state of Tamil Nadu. Its skyline is dominated by the 14 colorful gopurams (gateway towers) of Meenakshi Amman Temple. Covered in bright carvings of Hindu gods, the Dravidian-style temple is a major pilgrimage site. Millions attend the processions and ceremonies of April's Chithirai Festival celebrating Meenakshi and Lord Vishnu.",
+                Varanasi:"Varanasi is a city in the northern Indian state of Uttar Pradesh dating to the 11th century B.C. Regarded as the spiritual capital of India, the city draws Hindu pilgrims who bathe in the Ganges River’s sacred waters and perform funeral rites. Along the city's winding streets are some 2,000 temples, including Kashi Vishwanath, the “Golden Temple,” dedicated to the Hindu god Shiva.",
+                // Add more descriptions for other locations here
+            };
+
+            return descriptions[locationName] || "";
+        }
+    </script>
+</body>
+</html>

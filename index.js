@@ -17,7 +17,13 @@ app.use('/assets',express.static(path.join(__dirname,'public/assets')))
 const db = admin.firestore();
 
 app.get('/',function (req,res) {
-  res.render( __dirname + "/views/" + "signup" );
+  res.render( __dirname + "/views/" + "dash" );
+});
+app.get('/dash',function (req,res) {
+  res.render( __dirname + "/views/" + "dash" );
+});
+app.get('/venkat',function (req,res) {
+  res.render( __dirname + "/views/" + "venkat" );
 });
 
 app.get('/signup',function (req,res) {
@@ -50,14 +56,10 @@ app.get('/loginsubmit',function (req, res) {
     if(docs.size>0){
       res.render("home.ejs");
     }else{
-      res.send("Login Unsuccessfull");
+      res.render("fail.ejs");
     }
     console.log(docs.size)
   });
-});
-
-app.get('/dashboard',function (req,res) {
-  res.send("HI");
 });
 
 app.get('/weathersubmit',(req,res) =>{

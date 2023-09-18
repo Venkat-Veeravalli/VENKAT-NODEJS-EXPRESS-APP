@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Weather API</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/0fc647e4b7.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <style>
+        /* Reset some default styles */
+body, h1, h2, p, a {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: url('https://cdn.glitch.global/3247fa20-ac14-4295-ac27-7f9293d81c58/Weather-Backgrounds-HD.jpg?v=1692905331160') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background 0.5s; /* Dark/Light mode transition */
+}
+
+.container {
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    color: #000203; /* Blue font color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+p {
+    font-size: 24px;
+    margin-bottom: 30px;
+    font-weight: 300;
+    opacity: 0.8;
+    color: #ecf0f1; /* Light gray font color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.cta {
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #e74c3c; /* Red font color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #3498db; /* Blue button color */
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: scale(1.05);
+}
+
+.login, .signup {
+    color: #ed5c68; /* Blue font color */
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.login:hover, .signup:hover {
+    text-decoration: underline;
+}
+
+/* Additional Styles */
+.container::before {
+    content: "";
+    background-image: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(0, 0, 0, 0.8));
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.btn:focus {
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #333; /* Dark background color */
+    color: #fff;
+}
+
+body.dark-mode .btn {
+    background-color: #555; /* Dark button color */
+}
+
+/* Social Media Links */
+.social-links {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+}
+
+.social-icon {
+    display: inline-block;
+    margin-right: 10px;
+    font-size: 30px;
+    color: #030303;
+    text-decoration: none;
+    transition: transform 0.2s;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.social-icon:hover {
+    transform: scale(1.2);
+}
+.icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 100px; /* Adjust the size as needed */
+    color: #acc7e2; /* Adjust the color as needed */
+    z-index: 1;
+}
+.dark-mode-toggle {
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    z-index: 2; /* Ensure it's above other elements */
+    cursor: pointer;
+    font-size: 24px;
+    color: #333; /* Default icon color */
+    transition: color 0.3s;
+}
+
+.dark-mode-toggle:hover {
+    color: #fff; /* Icon color on hover */
+}
+
+    </style>
+    <!-- Dark Mode Toggle Icon -->
+    <div class="dark-mode-toggle" id="dark-mode-toggle">
+        <i class="fa-regular fa-moon"></i>
+    </div>
+
+    <!-- Icon in the top-left corner -->
+    <div class="icon">
+        <i class="fa-sharp fa-solid fa-cloud-sun-rain fa-sm"></i>
+    </div>
+    <div class="container">
+        <div class="content">
+            <header>
+                <h1>Welcome to Weather APP</h1>
+                <p>Your Source for Accurate Weather Information</p>
+            </header>
+            <main>
+                <section class="cta">
+                    <h2>Check the Weather Now</h2>
+                    <p>Get real-time weather updates for your location.</p>
+                    <a href="/signup" class="btn">Get Started</a>
+                </section>
+            </main>
+            <footer>
+                <!-- FontAwesome Icons -->
+                <div class="social-links">
+                    <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/VenkatVeeraval7?t=ynd65ce8I_-tYM4k3rK3-A&s=08" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/captain_terrible_?igshid=MzNlNGNkZWQ4Mg==" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/v-v-sai-raghavendra-021837240" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                </div>
+                <!-- End FontAwesome Icons -->
+                <p>Already have an account? <a href="#" class="login">Login</a></p>
+                <p>Don't have an account yet? <a href="#" class="signup">Sign Up</a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+         const darkModeToggle = document.getElementById("dark-mode-toggle");
+        const body = document.body;
+
+        darkModeToggle.addEventListener("click", () => {
+            if (body.classList.contains("dark-mode")) {
+                // If dark mode is active, deactivate it
+                body.classList.remove("dark-mode");
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                darkModeToggle.style.color = "white"; // Set icon color to white
+                updateColors("light"); // Update colors for light mode
+            } else {
+                // If dark mode is not active, activate it
+                body.classList.add("dark-mode");
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                darkModeToggle.style.color = "black"; // Set icon color to black
+                updateColors("dark"); // Update colors for dark mode
+            }
+        });
+
+        function updateColors(mode) {
+            const root = document.documentElement;
+
+            if (mode === "dark") {
+                root.style.setProperty('--bg-color', 'black');
+                root.style.setProperty('--text-color', 'white');
+            } else {
+                root.style.setProperty('--bg-color', 'white');
+                root.style.setProperty('--text-color', 'black');
+            }
+        }
+    </script>
+</body>
+</html>
