@@ -26,6 +26,14 @@ app.get('/venkat',function (req,res) {
   res.render( __dirname + "/views/" + "venkat" );
 });
 
+app.get('/services',function (req,res) {
+  res.render( __dirname + "/views/" + "services" );
+});
+
+app.get('/about',function (req,res) {
+  res.render( __dirname + "/views/" + "about" );
+});
+
 app.get('/signup',function (req,res) {
   res.render( __dirname + "/views/" + "signup.ejs" );
 });
