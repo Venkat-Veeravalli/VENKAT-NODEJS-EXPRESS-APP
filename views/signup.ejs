@@ -32,13 +32,13 @@
         </div>
     </nav>
 
-<!----------------------------- Form box ----------------------------------->    
+
     <div class="form-box">
         
-        <!------------------- login form -------------------------->
+    
 
        
-<form name="loginform" class="login-container" id="login" action="/loginsubmit" method="GET">
+<form name="loginform" class="login-container" id="login" action="/loginsubmit" method="POST">
     <div class="top">
         <span>Don't have an account? <a href="/signup" onclick="register()">Sign Up</a></span>
         <header>Login</header>
@@ -72,13 +72,13 @@
             const password = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
         
-            // ... (existing login validation)
+
         
-            return true; // Allow form submission
+            return true; 
         }
         </script>
 
-        <!------------------- registration form -------------------------->
+    
        
                    
         <div class="register-container" id="register">
@@ -86,7 +86,7 @@
                 <span>Have an account? <a href="/signup" onclick="login()">Login</a></span>
                 <header>Sign Up</header>
             </div>
-            <form action="/signupsubmit" name="signupForm" method="GET" onsubmit="return validation()">
+            <form action="/signupsubmit" name="signupForm" method="POST" onsubmit="return validation()">
             <div class="two-forms">
                 <div class="input-box">
                     <input class="input-field" required id="name" type="text" name="username" placeholder="Username" />
@@ -164,11 +164,11 @@ function validateRegistrationForm() {
         return false;
     }
 
-    return true; // Allow form submission
+    return true;
 }
 
 function isValidEmail(email) {
-    // Basic email validation using a regular expression
+  
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
     <style>
-        /* Reset some default styles */
+        
 body, h1, h2, p, a {
     margin: 0;
     padding: 0;
@@ -25,7 +25,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    transition: background 0.5s; /* Dark/Light mode transition */
+    transition: background 0.5s; 
 }
 
 .container {
@@ -39,7 +39,7 @@ header {
 h1 {
     font-size: 48px;
     margin-bottom: 10px;
-    color: #000203; /* Blue font color */
+    color: #000203; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -48,7 +48,7 @@ p {
     margin-bottom: 30px;
     font-weight: 300;
     opacity: 0.8;
-    color: #ecf0f1; /* Light gray font color */
+    color: #ecf0f1; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -66,14 +66,14 @@ main {
 h2 {
     font-size: 36px;
     margin-bottom: 20px;
-    color: #e74c3c; /* Red font color */
+    color: #e74c3c; 
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .btn {
     display: inline-block;
     padding: 15px 30px;
-    background-color: #3498db; /* Blue button color */
+    background-color: #3498db; 
     color: #fff;
     text-decoration: none;
     font-size: 20px;
@@ -86,12 +86,12 @@ h2 {
 }
 
 .btn:hover {
-    background-color: #2980b9; /* Darker blue on hover */
+    background-color: #2980b9; 
     transform: scale(1.05);
 }
 
 .login, .signup {
-    color: #ed5c68; /* Blue font color */
+    color: #ed5c68;
     text-decoration: none;
     font-weight: bold;
     margin: 0 10px;
@@ -101,7 +101,7 @@ h2 {
     text-decoration: underline;
 }
 
-/* Additional Styles */
+
 .container::before {
     content: "";
     background-image: linear-gradient(to bottom, rgba(0, 123, 255, 0.8), rgba(0, 0, 0, 0.8));
@@ -117,17 +117,17 @@ h2 {
     box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
 }
 
-/* Dark Mode Styles */
+
 body.dark-mode {
-    background: #333; /* Dark background color */
+    background: #333;
     color: #fff;
 }
 
 body.dark-mode .btn {
-    background-color: #555; /* Dark button color */
+    background-color: #555; 
 }
 
-/* Social Media Links */
+
 .social-links {
     position: absolute;
     top: 20px;
@@ -154,32 +154,31 @@ body.dark-mode .btn {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 100px; /* Adjust the size as needed */
-    color: #acc7e2; /* Adjust the color as needed */
+    font-size: 100px; 
+    color: #acc7e2; 
     z-index: 1;
 }
 .dark-mode-toggle {
     position: absolute;
     top: 20px;
     left: 100px;
-    z-index: 2; /* Ensure it's above other elements */
+    z-index: 2; 
     cursor: pointer;
     font-size: 24px;
-    color: #333; /* Default icon color */
+    color: #333; 
     transition: color 0.3s;
 }
 
 .dark-mode-toggle:hover {
-    color: #fff; /* Icon color on hover */
+    color: #fff; 
 }
 
     </style>
-    <!-- Dark Mode Toggle Icon -->
+    
     <div class="dark-mode-toggle" id="dark-mode-toggle">
         <i class="fa-regular fa-moon"></i>
     </div>
 
-    <!-- Icon in the top-left corner -->
     <div class="icon">
         <i class="fa-sharp fa-solid fa-cloud-sun-rain fa-sm"></i>
     </div>
@@ -197,14 +196,14 @@ body.dark-mode .btn {
                 </section>
             </main>
             <footer>
-                <!-- FontAwesome Icons -->
+            
                 <div class="social-links">
                     <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook"></i></a>
                     <a href="https://twitter.com/VenkatVeeraval7?t=ynd65ce8I_-tYM4k3rK3-A&s=08" class="social-icon"><i class="fab fa-twitter"></i></a>
                     <a href="https://www.instagram.com/captain_terrible_?igshid=MzNlNGNkZWQ4Mg==" class="social-icon"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.linkedin.com/in/v-v-sai-raghavendra-021837240" class="social-icon"><i class="fab fa-linkedin"></i></a>
                 </div>
-                <!-- End FontAwesome Icons -->
+               
                 <p>Already have an account? <a href="#" class="login">Login</a></p>
                 <p>Don't have an account yet? <a href="#" class="signup">Sign Up</a></p>
             </footer>
@@ -217,17 +216,17 @@ body.dark-mode .btn {
 
         darkModeToggle.addEventListener("click", () => {
             if (body.classList.contains("dark-mode")) {
-                // If dark mode is active, deactivate it
+               
                 body.classList.remove("dark-mode");
                 darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                darkModeToggle.style.color = "white"; // Set icon color to white
-                updateColors("light"); // Update colors for light mode
+                darkModeToggle.style.color = "white"; 
+                updateColors("light");
             } else {
-                // If dark mode is not active, activate it
+                
                 body.classList.add("dark-mode");
                 darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                darkModeToggle.style.color = "black"; // Set icon color to black
-                updateColors("dark"); // Update colors for dark mode
+                darkModeToggle.style.color = "black"; 
+                updateColors("dark"); 
             }
         });
 

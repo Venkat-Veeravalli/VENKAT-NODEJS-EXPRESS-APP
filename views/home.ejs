@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Information</title>
     <style>
-        /* Reset some default styles */
         body, h1, h2, h3, h4, h5, h6, p {
             margin: 0;
             padding: 0;
@@ -13,9 +12,9 @@
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #e0e0e0; /* Background color for the body */
-            margin: 0; /* Remove margin */
-            padding: 20px; /* Add padding */
+            background-color: #e0e0e0; 
+            margin: 0; 
+            padding: 20px; 
         }
 
         header {
@@ -74,33 +73,33 @@
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            justify-content: space-between; /* Adjusted spacing */
-            margin-top: 20px; /* Added margin for the card container */
+            justify-content: space-between;
+            margin-top: 20px;
         }
 
         .weather-card {
-            background-color: #f9f9f9; /* Card background color */
-            border: 2px solid #007BFF; /* Border color */
+            background-color: #f9f9f9; 
+            border: 2px solid #007BFF; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
             border-radius: 10px;
-            width: calc(33.33% - 20px); /* 3 cards per row */
+            width: calc(33.33% - 20px); 
             text-align: center;
             position: relative;
-            max-width: 300px; /* Decreased card size */
-            cursor: pointer; /* Add pointer cursor to cards */
-            transition: width 0.2s, transform 0.2s; /* Added card transition effect */
+            max-width: 300px; 
+            cursor: pointer; 
+            transition: width 0.2s, transform 0.2s; 
         }
 
-        /* Ribbon styling */
+      
         .ribbon {
             position: absolute;
             top: -10px;
             right: -10px;
-            background-color: #007BFF; /* Ribbon color */
+            background-color: #007BFF; 
             color: white;
             padding: 5px 15px;
-            border-radius: 0 0 0 10px; /* Ribbon shape */
+            border-radius: 0 0 0 10px; 
         }
 
         .weather-card img {
@@ -110,13 +109,13 @@
         }
 
         .weather-card h2 {
-            font-size: 20px; /* Decreased heading font size */
+            font-size: 20px; 
             margin-top: 10px;
         }
 
         .weather-card p {
             margin-top: 10px;
-            font-size: 16px; /* Decreased text font size */
+            font-size: 16px; 
         }
 
         .date-time {
@@ -124,28 +123,28 @@
             color: #0c0101;
         }
 
-        /* Welcome message styling */
+        
         .welcome-message {
             text-align: center;
             font-size: 24px;
-            color: rgb(237, 231, 231); /* Text color for the welcome message */
-            margin-top: 20px; /* Added margin for the welcome message */
-            background-color: #333; /* Background color for the welcome message */
-            padding: 10px 0; /* Added padding for the welcome message */
+            color: rgb(237, 231, 231); 
+            margin-top: 20px; 
+            background-color: #333; 
+            padding: 10px 0; 
         }
 
         .weather-card:hover {
-            width: 35%; /* Enlarge the card on hover */
-            transform: scale(1.05); /* Apply a scale transform on hover */
+            width: 35%; 
+            transform: scale(1.05); 
         }
 
         .weather-card.selected {
-            width: 100%; /* Increase the width when selected */
-            max-width: 600px; /* Increase the max-width */
-            z-index: 1; /* Bring the selected card to the front */
+            width: 100%; 
+            max-width: 600px; 
+            z-index: 1; 
         }
 
-        /* Define different background colors for cards */
+       
         .card-mumbai { background-color: #91a0b5; }
         .card-delhi { background-color: #8b8698; }
         .card-chennai { background-color: #8b8698; }
@@ -167,9 +166,9 @@
         .card-pune { background-color: #8b8698; }
         .card-varanasi { background-color: #8b8698; }
         .card-warangal { background-color: #8b8698; }
-        /* Add more card classes with different background colors as needed */
+        
 
-        /* Style the description content */
+       
         .weather-card-description {
             margin-top: 20px;
             padding: 10px;
@@ -198,33 +197,33 @@
     </header>
 
     <div class="search-container">
-        <form action="/weathersubmit" method="GET">
+        <form action="/weathersubmit" method="POST">
         <input type="text" id="location-input" placeholder="Enter Location" name="location">
         <button type="submit" id="search-button"value="Weather details" class="btn btn-primary">Submit</button>
     </form>
     </div>
 
 
-    <!-- Welcome message -->
+
     <div class="welcome-message">
         Welcome to Weather Information!
     </div>
 
     <div class="weather-cards-container" id="weather-cards-container">
-        <!-- Weather cards will be added here -->
+    
     </div>
 
     <script>
-        // Function to create a weather card
+        
         function createWeatherCard(weather) {
             const cardContainer = document.querySelector("#weather-cards-container");
 
             const card = document.createElement("div");
             card.classList.add("weather-card");
-            // Add a class for the specific location (e.g., card-mumbai)
+            
             card.classList.add(`card-${weather.locationName.toLowerCase()}`);
 
-            // Get the image URL based on the location name
+            
             const locationImages = {
                 Mumbai: 'https://cdn.glitch.global/50b901c5-3507-448f-8eed-280cf9e64425/1024px-Mumbai_Aug_2018_43397784544-1024x761.jpg?v=1694979887655',
                 Delhi: 'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/Delhi.jpg?v=1695020106382',
@@ -246,16 +245,16 @@
                 Vijayawada:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/VIJAYAWADA.jpg?v=1695021523923',
                 Madurai:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/MADHURAI.jpg?v=1695021508086',
                 Varanasi:'https://cdn.glitch.global/dd14494d-4db3-462f-8811-22300c4b1492/varanasi.jpg?v=1695021788211',
-                // Add more locations and image URLs here
+                
             };
 
             const imageUrl = locationImages[weather.locationName] || 'https://example.com/default-image.jpg';
 
             const image = document.createElement("img");
-            image.src = imageUrl; // Use the image URL
+            image.src = imageUrl; 
             image.alt = weather.locationName;
 
-            // Ribbon with location name
+            
             const ribbon = document.createElement("div");
             ribbon.classList.add("ribbon");
             ribbon.textContent = weather.locationName;
@@ -279,7 +278,7 @@
     dateTime.classList.add("date-time");
     dateTime.textContent = `Updated: ${weather.dateTime}`;
 
-    // Description content
+    
     const description = document.createElement("p");
     description.classList.add("weather-card-description");
     description.textContent = getCardDescription(weather.locationName);
@@ -299,29 +298,29 @@
             card.addEventListener("click", () => {
         const cards = document.querySelectorAll(".weather-card");
         cards.forEach((c) => {
-            c.classList.remove("selected"); // Deselect all cards
-            c.style.display = "none"; // Hide all cards
+            c.classList.remove("selected"); 
+            c.style.display = "none"; 
         });
-        card.classList.add("selected"); // Select the clicked card
-        card.style.display = "block"; // Display the selected card
+        card.classList.add("selected"); 
+        card.style.display = "block"; 
 
-        // Scroll the selected card into view
+        
         card.scrollIntoView({ behavior: "smooth", block: "center" });
     });
         }
 
-// Function to fetch weather data from an API
+
 async function fetchWeatherData(location) {
     try {
-        // Replace 'YOUR_API_KEY' with your actual API key
+      
         const apiKey = 'r1JI1KF9JTTSAtVpMWpUH2PDV1T40G1H1FU2cvYvRo4NiarhHUl214fjOnwx';
         const apiUrl = `https://api.weatherapi.com/v1/forecast.json?key=1d38e74f95ff438e84b64154220306&q=${apiKey}&q=${location}`;
 
-        // Fetch data from the API
+       
         const response = await fetch(apiUrl);
         const data = await response.json();
 
-        // Extract necessary weather information from the API response
+     
         const weatherData = {
             locationName: data.location.name,
             country: data.location.country,
@@ -337,7 +336,7 @@ async function fetchWeatherData(location) {
     }
 }
 
-        // Event listener for the search button
+       
         document.getElementById("search-button").addEventListener("click", () => {
             const location = document.getElementById("location-input").value;
             if (location) {
@@ -345,13 +344,13 @@ async function fetchWeatherData(location) {
             }
         });
 
-        // Initially load weather data for predefined locations
+        
         const predefinedLocations = ['Mumbai', 'Delhi', 'Chennai','Banglore', 'Kolkata', 'Hyderabad', 'Jaipur', 'Pune', 'Warangal', 'Coimbatore', 'Rajkot', 'Visakhapatnam', 'Bhopal', 'Nagpur', 'Kochi', 'Nashik', 'Agra', 'Madurai', 'Vijayawada', 'Varanasi'];
         predefinedLocations.forEach((location) => {
             fetchWeatherData(location);
         });
 
-        // Function to get the description text for a location
+        
         function getCardDescription(locationName) {
             const descriptions = {
                 Mumbai: "Mumbai (formerly called Bombay) is a densely populated city on India’s west coast. A financial center, it's India's largest city. On the Mumbai Harbour waterfront stands the iconic Gateway of India stone arch, built by the British Raj in 1924. Offshore, nearby Elephanta Island holds ancient cave temples dedicated to the Hindu god Shiva. The city's also famous as the heart of the Bollywood film industry.",
@@ -374,7 +373,7 @@ async function fetchWeatherData(location) {
                 Vijayawada:"Vijayawada is a city in the southeast Indian state of Andhra Pradesh. It's known for the ornate Kanaka Durga Temple, which sits atop a hill overlooking the city. The Undavalli Caves feature ancient rock-cut temples, carved out of a sandstone hillside and adorned with elaborate statues. The massive Prakasam Barrage stretches across the Krishna River. Nearby is Bhavani Island, with forests and waterfront gardens.",
                 Madurai:"Madurai is an energetic, ancient city on the Vaigai River in the South Indian state of Tamil Nadu. Its skyline is dominated by the 14 colorful gopurams (gateway towers) of Meenakshi Amman Temple. Covered in bright carvings of Hindu gods, the Dravidian-style temple is a major pilgrimage site. Millions attend the processions and ceremonies of April's Chithirai Festival celebrating Meenakshi and Lord Vishnu.",
                 Varanasi:"Varanasi is a city in the northern Indian state of Uttar Pradesh dating to the 11th century B.C. Regarded as the spiritual capital of India, the city draws Hindu pilgrims who bathe in the Ganges River’s sacred waters and perform funeral rites. Along the city's winding streets are some 2,000 temples, including Kashi Vishwanath, the “Golden Temple,” dedicated to the Hindu god Shiva.",
-                // Add more descriptions for other locations here
+                
             };
 
             return descriptions[locationName] || "";

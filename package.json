@@ -19,6 +19,7 @@
     "node-telegram-bot-api": "^0.61.0",
     "nodemailer": "^6.9.5",
     "nodemailer-smtp-transport": "^2.7.4",
+    "password-hash": "^1.2.2",
     "request": "^2.88.2",
     "request-stats": "^3.0.0",
     "require": "^2.4.20",

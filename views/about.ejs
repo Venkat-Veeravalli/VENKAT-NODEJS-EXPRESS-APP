@@ -6,7 +6,7 @@
     <title>About Our Weather App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Your CSS styles here */
+       
         body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -132,7 +132,7 @@
     </div>
 
     <script>
-        // JavaScript function to toggle the user rating and show review
+      
         let currentRating = 0;
 
         function toggleRating(rating) {
@@ -142,13 +142,13 @@
             const reviewContent = document.getElementById('reviewContent');
 
             if (rating === currentRating) {
-                // Deselect the current rating
+               
                 currentRating = 0;
                 stars.forEach(star => star.classList.remove('filled'));
                 userRating.style.display = 'block';
                 userReview.style.display = 'none';
             } else {
-                // Select a new rating
+               
                 currentRating = rating;
                 stars.forEach((star, index) => {
                     if (index < rating) {
@@ -163,7 +163,7 @@
             }
         }
 
-        // Helper function to get rating text
+       
         function getRatingText(rating) {
             switch (rating) {
                 case 1:

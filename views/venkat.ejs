@@ -327,7 +327,7 @@
             --background-color: #000;
             --text-color: #0b0505;
             --title-color: #fff;
-            /* Dark mode styles go here */
+           
         }
 
     </style>
@@ -451,10 +451,10 @@
         darkModeToggle.addEventListener('click', () => {
             if (body.classList.contains('dark-theme')) {
                 body.classList.remove('dark-theme');
-                darkModeToggle.style.backgroundColor = '#4864ff'; // Change button background color in light mode
+                darkModeToggle.style.backgroundColor = '#4864ff'; 
             } else {
                 body.classList.add('dark-theme');
-                darkModeToggle.style.backgroundColor = '#333'; // Change button background color in dark mode
+                darkModeToggle.style.backgroundColor = '#333'; 
             }
         });
     
